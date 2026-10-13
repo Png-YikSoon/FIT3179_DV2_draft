@@ -2,7 +2,7 @@
 
 FIT3179 Data Visualisation 2 (Semester 2, 2026) · P'ng Yik Soon · Monash University Malaysia
 
-Live page: `https://<your-github-username>.github.io/<repo-name>/`
+Live page: ``
 
 ## Structure
 ```
