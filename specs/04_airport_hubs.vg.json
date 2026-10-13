@@ -1,0 +1,185 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Passengers on major routes at each airport, July 2025 to June 2026. Circle area shows passengers; colour shows traffic compared with 2018–19.",
+  "width": 720,
+  "height": 600,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ecebe6",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/04_airports_traffic_recovery.csv"
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.recovery_pct_of_2019)"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "stroke": "#ffffff",
+        "strokeWidth": 1,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "passengers_fy2026",
+          "type": "quantitative",
+          "title": "Passengers (2025–26)",
+          "scale": {
+            "range": [
+              15,
+              3000
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "format": "~s",
+            "values": [
+              500000,
+              5000000,
+              20000000
+            ],
+            "symbolFillColor": "#c3c2b7",
+            "symbolStrokeColor": "#ffffff"
+          }
+        },
+        "color": {
+          "field": "recovery_pct_of_2019",
+          "type": "quantitative",
+          "title": [
+            "Traffic vs 2018–19",
+            "(100 = same)"
+          ],
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 200
+          },
+          "scale": {
+            "domain": [
+              40,
+              100,
+              160
+            ],
+            "range": [
+              "#e34948",
+              "#f0efec",
+              "#2a78d6"
+            ],
+            "clamp": true,
+            "interpolate": "lab"
+          }
+        },
+        "order": {
+          "field": "passengers_fy2026",
+          "type": "quantitative",
+          "sort": "descending"
+        },
+        "tooltip": [
+          {
+            "field": "city",
+            "title": "Airport"
+          },
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "passengers_fy2019",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Passengers 2018–19"
+          },
+          {
+            "field": "passengers_fy2026",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Passengers 2025–26"
+          },
+          {
+            "field": "change_pct",
+            "type": "quantitative",
+            "format": "+.1f",
+            "title": "Change (%)"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/04_airports_traffic_recovery.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.passengers_fy2026 > 2500000 || abs(datum.change_pct) > 50"
+        },
+        {
+          "calculate": "datum.city + ' ' + (datum.change_pct > 0 ? '+' : '') + format(datum.change_pct, '.0f') + '%'",
+          "as": "label"
+        },
+        {
+          "calculate": "datum.code == 'OOL' ? datum.lat - 0.5 : datum.code == 'BNE' ? toNumber(datum.lat) + 0.35 : toNumber(datum.lat)",
+          "as": "label_lat"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "fontSize": 11,
+        "color": "#0b0b0b"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

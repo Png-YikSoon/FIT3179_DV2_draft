@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Up in the Air: Domestic Flying in Australia</title>
+  <meta name="description" content="A data story about domestic airline travel within Australia, 2014–2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">FIT3179 Data Visualisation 2 · Domestic air travel in Australia</p>
+    <h1>Up in the Air</h1>
+    <p class="lede">Australia is a country the size of Europe with most of its people in a handful of coastal cities.
+      For many trips, flying is the only practical way to get around. How many people fly, where do they go,
+      and why? <!-- DRAFT: rewrite the lede in your own words --></p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============================================================ SECTION 1: WHEN -->
+  <section id="when">
+    <p class="section-num">01</p>
+    <h2>When Australians fly</h2>
+
+    <article class="chart-block">
+      <h3>A Nation in Motion: Domestic Passenger Trends, 2014–2026</h3>
+      <p class="note">DRAFT: About 61 million passengers flew in 2019. In 2020, border closures cut this to 19 million.
+        By 2025, traffic was back to 60 million, about 98% of the 2019 level.</p>
+      <div id="vis01" class="vis"></div>
+    </article>
+
+    <article class="chart-block split">
+      <div class="split-text">
+        <h3>Australia's Travel Calendar: When Do Passengers Fly?</h3>
+        <p class="note">Each ring is one year (2015 in the centre, 2025 on the outside). Each segment is a month.
+          Blue months were busier than that year's average month; red months were quieter.</p>
+        <p class="note">DRAFT: point out the spring peak (October), the January holiday rush and the quiet February.</p>
+      </div>
+      <div id="vis02" class="vis"></div>
+    </article>
+
+    <article class="chart-block">
+      <h3>Holiday Peaks or Everyday Journeys?</h3>
+      <p class="note">Each line shows a route's average month from 2023 to 2025. 100 means a typical month for that route.
+        DRAFT: leisure routes swing with the holidays; business and mining routes stay steadier.</p>
+      <div id="vis11" class="vis"></div>
+    </article>
+  </section>
+
+  <!-- ============================================================ SECTION 2: WHERE -->
+  <section id="where">
+    <p class="section-num">02</p>
+    <h2>Where the planes go</h2>
+
+    <article class="chart-block">
+      <h3>Connected by Air: Australia's Domestic Flight Network</h3>
+      <p class="note">Thicker lines carried more passengers between July 2025 and June 2026. Hover over a line to see the route.</p>
+      <div id="vis03" class="vis vis-map"></div>
+    </article>
+
+    <article class="chart-block">
+      <h3>Australia's Aviation Hubs: Where Traffic Concentrates</h3>
+      <p class="note">Circle size shows passengers on major routes through each airport (2025–26).
+        Blue airports are busier than before COVID-19 (2018–19); red airports have not recovered.</p>
+      <div id="vis04" class="vis vis-map"></div>
+    </article>
+  </section>
+
+  <!-- ============================================================ SECTION 3: WHICH ROUTES -->
+  <section id="routes">
+    <p class="section-num">03</p>
+    <h2>The busiest routes</h2>
+
+    <article class="chart-block">
+      <h3>The Race for the Top: How Australia's Busiest Routes Change</h3>
+      <p class="note">Australia's financial year runs from July to June, so "2025–26" means July 2025 to June 2026.
+        Hover over a line to follow one route.</p>
+      <div id="vis05" class="vis"></div>
+    </article>
+
+    <article class="chart-block split">
+      <div class="split-text">
+        <h3>Routes Rewritten: Which Connections Recovered?</h3>
+        <p class="note">Passengers on 2019's 15 busiest routes, compared with 2025. The scale is logarithmic,
+          so equal slopes mean equal percentage changes.</p>
+        <p class="note">DRAFT: Melbourne–Sydney is still number one but carried 12% fewer passengers;
+          Brisbane–Perth grew 19%.</p>
+      </div>
+      <div id="vis10" class="vis"></div>
+    </article>
+
+    <article class="chart-block">
+      <h3>How Full Are the Planes? Demand Across Routes and Months</h3>
+      <p class="note">The "load factor" is the share of seats that had a paying passenger.
+        Darker squares mean fuller planes. July 2025 to June 2026.</p>
+      <div id="vis06" class="vis"></div>
+    </article>
+  </section>
+
+  <!-- ============================================================ SECTION 4: WHY -->
+  <section id="why">
+    <p class="section-num">04</p>
+    <h2>Why Australians travel</h2>
+    <p class="note callout">These charts use Tourism Research Australia's survey of all domestic trips, by any
+      kind of transport (car, bus, train or plane), not just flights.</p>
+
+    <article class="chart-block">
+      <h3>Work or Escape? Why Australians Travel Domestically</h3>
+      <p class="note">Each square is 1% of trips, year ending June 2026.</p>
+      <div id="vis08" class="vis"></div>
+    </article>
+
+    <article class="chart-block">
+      <h3>Is the Purpose of Travel Changing?</h3>
+      <p class="note">Trips in each quarter compared with the June quarter 2025 (= 100).
+        DRAFT: business trips fell by nearly a fifth (−18%) in a year while holiday trips grew.</p>
+      <div id="vis09" class="vis"></div>
+    </article>
+
+    <article class="chart-block">
+      <h3>Domestic Travel Across Australia: Where Tourism Is Growing</h3>
+      <p class="note">Change by state visited, year ending June 2026 compared with the year before.
+        Use the menu to switch measures. * Smaller states have higher survey error.</p>
+      <div id="vis07" class="vis vis-map"></div>
+    </article>
+
+    <article class="chart-block">
+      <h3>Short Break or Long Holiday?</h3>
+      <p class="note">Holiday trips by length, June quarter 2026. Families with children were more likely to stay
+        four to seven nights.</p>
+      <div id="vis12" class="vis"></div>
+    </article>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Data sources.</strong>
+      Bureau of Infrastructure and Transport Research Economics (BITRE), <em>Domestic airline activity: Top routes / city pairs</em>, July 2014 – July 2026.
+      Tourism Research Australia, <em>Domestic Tourism Statistics</em>, June quarter 2026.
+      Airport locations: OurAirports (public domain). State boundaries: Australian Bureau of Statistics via rowanhogan/australian-states.</p>
+    <p><strong>Author.</strong> P'ng Yik Soon · Monash University Malaysia · October 2026.
+      Built with <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>.
+      <!-- Add your AI-use acknowledgement here --></p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

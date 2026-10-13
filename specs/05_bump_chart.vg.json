@@ -1,0 +1,272 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 10 domestic routes by passengers in each financial year (July to June).",
+  "width": "container",
+  "height": 360,
+  "padding": {
+    "right": 160
+  },
+  "data": {
+    "url": "data/05_bump_top10_routes_by_fy.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "fy": "number",
+        "rank": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "indexof([\"Melbourne – Sydney\", \"Brisbane – Cairns\", \"Melbourne – Gold Coast\"], datum.route) >= 0 ? datum.route : 'Other routes'",
+      "as": "group"
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "a": "2019–20",
+            "b": "2021–22"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#f0efec"
+      },
+      "encoding": {
+        "x": {
+          "field": "a",
+          "type": "ordinal",
+          "sort": [
+            "2014–15",
+            "2015–16",
+            "2016–17",
+            "2017–18",
+            "2018–19",
+            "2019–20",
+            "2020–21",
+            "2021–22",
+            "2022–23",
+            "2023–24",
+            "2024–25",
+            "2025–26"
+          ]
+        },
+        "x2": {
+          "field": "b"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "a": "2020–21",
+            "t": "COVID years: some data withheld"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "y": -8,
+        "fontSize": 11,
+        "color": "#52514e"
+      },
+      "encoding": {
+        "x": {
+          "field": "a",
+          "type": "ordinal",
+          "sort": [
+            "2014–15",
+            "2015–16",
+            "2016–17",
+            "2017–18",
+            "2018–19",
+            "2019–20",
+            "2020–21",
+            "2021–22",
+            "2022–23",
+            "2023–24",
+            "2024–25",
+            "2025–26"
+          ]
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "encoding": {
+        "x": {
+          "field": "fy_label",
+          "type": "ordinal",
+          "sort": [
+            "2014–15",
+            "2015–16",
+            "2016–17",
+            "2017–18",
+            "2018–19",
+            "2019–20",
+            "2020–21",
+            "2021–22",
+            "2022–23",
+            "2023–24",
+            "2024–25",
+            "2025–26"
+          ],
+          "title": "Financial year (July to June)",
+          "axis": {
+            "labelAngle": 0,
+            "labelExpr": "substring(datum.value, 0, 4) % 2 == 0 ? datum.value : ''"
+          },
+          "scale": {
+            "padding": 0.5
+          }
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              10.5,
+              0.5
+            ],
+            "nice": false
+          },
+          "axis": {
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "grid": false
+          },
+          "title": "Rank"
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "title": null,
+          "legend": {
+            "orient": "top"
+          },
+          "scale": {
+            "domain": [
+              "Melbourne – Sydney",
+              "Brisbane – Cairns",
+              "Melbourne – Gold Coast",
+              "Other routes"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834",
+              "#1baf7a",
+              "#c3c2b7"
+            ]
+          }
+        },
+        "detail": {
+          "field": "route"
+        },
+        "opacity": {
+          "condition": {
+            "param": "pick",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.2
+        }
+      },
+      "layer": [
+        {
+          "params": [
+            {
+              "name": "pick",
+              "select": {
+                "type": "point",
+                "fields": [
+                  "route"
+                ],
+                "on": "pointerover",
+                "clear": "pointerout"
+              }
+            }
+          ],
+          "mark": {
+            "type": "line",
+            "strokeWidth": 2.5,
+            "interpolate": "monotone"
+          }
+        },
+        {
+          "mark": {
+            "type": "circle",
+            "size": 70,
+            "stroke": "#ffffff",
+            "strokeWidth": 1.5,
+            "opacity": 1
+          },
+          "encoding": {
+            "tooltip": [
+              {
+                "field": "route",
+                "title": "Route"
+              },
+              {
+                "field": "fy_label",
+                "title": "Year"
+              },
+              {
+                "field": "rank",
+                "title": "Rank"
+              },
+              {
+                "field": "passengers",
+                "type": "quantitative",
+                "format": ",",
+                "title": "Passengers"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.fy == 2026"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "fontSize": 11
+          },
+          "encoding": {
+            "text": {
+              "field": "route"
+            },
+            "color": {
+              "value": "#0b0b0b"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

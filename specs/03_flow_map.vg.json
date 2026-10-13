@@ -1,0 +1,192 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Domestic routes, July 2025 to June 2026. Line width shows passengers carried (both directions).",
+  "width": 720,
+  "height": 600,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ecebe6",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/03_flowmap_routes_fy2026.csv"
+      },
+      "params": [
+        {
+          "name": "route",
+          "select": {
+            "type": "point",
+            "fields": [
+              "route"
+            ],
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeCap": "round",
+        "color": "#2a78d6"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "origin_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "origin_lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "dest_lon"
+        },
+        "latitude2": {
+          "field": "dest_lat"
+        },
+        "strokeWidth": {
+          "field": "passengers_fy2026",
+          "type": "quantitative",
+          "title": "Passengers (2025–26)",
+          "scale": {
+            "range": [
+              0.6,
+              12
+            ]
+          },
+          "legend": {
+            "format": "~s",
+            "values": [
+              500000,
+              2000000,
+              8000000
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "route",
+            "empty": true,
+            "value": 0.6
+          },
+          "value": 0.15
+        },
+        "order": {
+          "field": "passengers_fy2026",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "route",
+            "title": "Route"
+          },
+          {
+            "field": "rank",
+            "title": "Rank"
+          },
+          {
+            "field": "passengers_fy2026",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Passengers 2025–26"
+          },
+          {
+            "field": "distance_km",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Distance (km)"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/airports.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 18,
+        "color": "#0b0b0b",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "city",
+            "title": "Airport"
+          },
+          {
+            "field": "state",
+            "title": "State"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/airports.csv"
+      },
+      "transform": [
+        {
+          "filter": "indexof(['Sydney','Melbourne','Brisbane','Perth','Adelaide','Hobart','Darwin','Cairns','Canberra','Gold Coast','Port Hedland','Karratha','Alice Springs'], datum.city) >= 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -9,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#0b0b0b"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "city"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

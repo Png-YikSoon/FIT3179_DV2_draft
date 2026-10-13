@@ -1,0 +1,155 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Average monthly passengers 2023–2025 on selected routes, compared with each route's average month (100).",
+  "data": {
+    "url": "data/11_seasonal_selected_routes_2023_2025.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "month_num": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "indexof([\"Business corridor\", \"Leisure\", \"Mining (FIFO)\"], datum.route_type)",
+      "as": "type_order"
+    }
+  ],
+  "facet": {
+    "field": "route",
+    "type": "nominal",
+    "title": null,
+    "sort": {
+      "field": "type_order"
+    },
+    "header": {
+      "labelFontSize": 12,
+      "labelFontWeight": 600,
+      "labelAnchor": "start"
+    }
+  },
+  "columns": 4,
+  "spec": {
+    "width": 170,
+    "height": 110,
+    "layer": [
+      {
+        "data": {
+          "values": [
+            {
+              "y": 100
+            }
+          ]
+        },
+        "mark": {
+          "type": "rule",
+          "color": "#c3c2b7",
+          "strokeDash": [
+            3,
+            3
+          ]
+        },
+        "encoding": {
+          "y": {
+            "field": "y",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                60,
+                130
+              ]
+            }
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "line",
+          "strokeWidth": 2,
+          "interpolate": "monotone"
+        },
+        "encoding": {
+          "x": {
+            "field": "month_num",
+            "type": "ordinal",
+            "title": null,
+            "axis": {
+              "labelExpr": "['J','F','M','A','M','J','J','A','S','O','N','D'][datum.value-1]",
+              "labelAngle": 0
+            }
+          },
+          "y": {
+            "field": "index_vs_route_avg",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                60,
+                130
+              ]
+            },
+            "title": null,
+            "axis": {
+              "values": [
+                70,
+                100,
+                130
+              ]
+            }
+          },
+          "color": {
+            "field": "route_type",
+            "type": "nominal",
+            "title": "Route type",
+            "scale": {
+              "domain": [
+                "Business corridor",
+                "Leisure",
+                "Mining (FIFO)"
+              ],
+              "range": [
+                "#2a78d6",
+                "#eb6834",
+                "#1baf7a"
+              ]
+            },
+            "legend": {
+              "orient": "top"
+            }
+          },
+          "tooltip": [
+            {
+              "field": "route",
+              "title": "Route"
+            },
+            {
+              "field": "month",
+              "title": "Month"
+            },
+            {
+              "field": "avg_passengers",
+              "type": "quantitative",
+              "format": ",.0f",
+              "title": "Avg passengers"
+            },
+            {
+              "field": "index_vs_route_avg",
+              "type": "quantitative",
+              "title": "Index (100 = avg month)"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "y": "shared"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

@@ -1,0 +1,121 @@
+fy,fy_label,route_code,route,passengers,rank,covid_data_gap
+2015,2014–15,MEL-SYD,Melbourne – Sydney,8454641,1,False
+2015,2014–15,BNE-SYD,Brisbane – Sydney,4408038,2,False
+2015,2014–15,BNE-MEL,Brisbane – Melbourne,3320063,3,False
+2015,2014–15,OOL-SYD,Gold Coast – Sydney,2583310,4,False
+2015,2014–15,ADL-MEL,Adelaide – Melbourne,2282904,5,False
+2015,2014–15,MEL-PER,Melbourne – Perth,2131714,6,False
+2015,2014–15,ADL-SYD,Adelaide – Sydney,1816962,7,False
+2015,2014–15,PER-SYD,Perth – Sydney,1774648,8,False
+2015,2014–15,MEL-OOL,Melbourne – Gold Coast,1759635,9,False
+2015,2014–15,HBA-MEL,Hobart – Melbourne,1452673,10,False
+2016,2015–16,MEL-SYD,Melbourne – Sydney,8795971,1,False
+2016,2015–16,BNE-SYD,Brisbane – Sydney,4608032,2,False
+2016,2015–16,BNE-MEL,Brisbane – Melbourne,3438690,3,False
+2016,2015–16,OOL-SYD,Gold Coast – Sydney,2702341,4,False
+2016,2015–16,ADL-MEL,Adelaide – Melbourne,2362739,5,False
+2016,2015–16,MEL-PER,Melbourne – Perth,2121994,6,False
+2016,2015–16,MEL-OOL,Melbourne – Gold Coast,1898578,7,False
+2016,2015–16,ADL-SYD,Adelaide – Sydney,1869800,8,False
+2016,2015–16,PER-SYD,Perth – Sydney,1760030,9,False
+2016,2015–16,HBA-MEL,Hobart – Melbourne,1526148,10,False
+2017,2016–17,MEL-SYD,Melbourne – Sydney,8974492,1,False
+2017,2016–17,BNE-SYD,Brisbane – Sydney,4695740,2,False
+2017,2016–17,BNE-MEL,Brisbane – Melbourne,3500409,3,False
+2017,2016–17,OOL-SYD,Gold Coast – Sydney,2712659,4,False
+2017,2016–17,ADL-MEL,Adelaide – Melbourne,2413416,5,False
+2017,2016–17,MEL-PER,Melbourne – Perth,2048066,6,False
+2017,2016–17,MEL-OOL,Melbourne – Gold Coast,1992211,7,False
+2017,2016–17,ADL-SYD,Adelaide – Sydney,1886465,8,False
+2017,2016–17,PER-SYD,Perth – Sydney,1737752,9,False
+2017,2016–17,HBA-MEL,Hobart – Melbourne,1598679,10,False
+2018,2017–18,MEL-SYD,Melbourne – Sydney,9240144,1,False
+2018,2017–18,BNE-SYD,Brisbane – Sydney,4787916,2,False
+2018,2017–18,BNE-MEL,Brisbane – Melbourne,3557028,3,False
+2018,2017–18,OOL-SYD,Gold Coast – Sydney,2751593,4,False
+2018,2017–18,ADL-MEL,Adelaide – Melbourne,2487206,5,False
+2018,2017–18,MEL-PER,Melbourne – Perth,2057845,6,False
+2018,2017–18,MEL-OOL,Melbourne – Gold Coast,2042212,7,False
+2018,2017–18,ADL-SYD,Adelaide – Sydney,1908697,8,False
+2018,2017–18,PER-SYD,Perth – Sydney,1719947,9,False
+2018,2017–18,HBA-MEL,Hobart – Melbourne,1638627,10,False
+2019,2018–19,MEL-SYD,Melbourne – Sydney,9196196,1,False
+2019,2018–19,BNE-SYD,Brisbane – Sydney,4814500,2,False
+2019,2018–19,BNE-MEL,Brisbane – Melbourne,3594840,3,False
+2019,2018–19,OOL-SYD,Gold Coast – Sydney,2691863,4,False
+2019,2018–19,ADL-MEL,Adelaide – Melbourne,2506816,5,False
+2019,2018–19,MEL-PER,Melbourne – Perth,2115710,6,False
+2019,2018–19,MEL-OOL,Melbourne – Gold Coast,2083407,7,False
+2019,2018–19,ADL-SYD,Adelaide – Sydney,1877296,8,False
+2019,2018–19,PER-SYD,Perth – Sydney,1690364,9,False
+2019,2018–19,HBA-MEL,Hobart – Melbourne,1661319,10,False
+2020,2019–20,MEL-SYD,Melbourne – Sydney,6602734,1,True
+2020,2019–20,BNE-SYD,Brisbane – Sydney,3533361,2,True
+2020,2019–20,BNE-MEL,Brisbane – Melbourne,2671470,3,True
+2020,2019–20,ADL-MEL,Adelaide – Melbourne,1847601,4,True
+2020,2019–20,MEL-PER,Melbourne – Perth,1585167,5,True
+2020,2019–20,MEL-OOL,Melbourne – Gold Coast,1561047,6,True
+2020,2019–20,PER-SYD,Perth – Sydney,1266092,7,True
+2020,2019–20,BNE-CNS,Brisbane – Cairns,962048,8,True
+2020,2019–20,CBR-MEL,Canberra – Melbourne,851179,9,True
+2020,2019–20,CNS-SYD,Cairns – Sydney,777667,10,True
+2021,2020–21,MEL-SYD,Melbourne – Sydney,1728062,1,True
+2021,2020–21,BNE-SYD,Brisbane – Sydney,1237576,2,True
+2021,2020–21,BNE-CNS,Brisbane – Cairns,947237,3,True
+2021,2020–21,BNE-MEL,Brisbane – Melbourne,772577,4,True
+2021,2020–21,BNE-TSV,Brisbane – Townsville,644203,5,True
+2021,2020–21,ADL-SYD,Adelaide – Sydney,616744,6,True
+2021,2020–21,ADL-MEL,Adelaide – Melbourne,547322,7,True
+2021,2020–21,QNA-SYD,Ballina – Sydney,509620,8,True
+2021,2020–21,BNE-MKY,Brisbane – Mackay,484428,9,True
+2021,2020–21,ADL-BNE,Adelaide – Brisbane,458551,10,True
+2022,2021–22,MEL-SYD,Melbourne – Sydney,3625094,1,True
+2022,2021–22,BNE-SYD,Brisbane – Sydney,1692326,2,True
+2022,2021–22,BNE-MEL,Brisbane – Melbourne,1429796,3,True
+2022,2021–22,ADL-MEL,Adelaide – Melbourne,1039978,4,True
+2022,2021–22,BNE-CNS,Brisbane – Cairns,1021832,5,True
+2022,2021–22,ADL-SYD,Adelaide – Sydney,713469,6,True
+2022,2021–22,BNE-TSV,Brisbane – Townsville,702401,7,True
+2022,2021–22,HBA-MEL,Hobart – Melbourne,601068,8,True
+2022,2021–22,BNE-MKY,Brisbane – Mackay,565773,9,True
+2022,2021–22,MEL-PER,Melbourne – Perth,485734,10,True
+2023,2022–23,MEL-SYD,Melbourne – Sydney,7314040,1,False
+2023,2022–23,BNE-SYD,Brisbane – Sydney,4043659,2,False
+2023,2022–23,BNE-MEL,Brisbane – Melbourne,3124330,3,False
+2023,2022–23,OOL-SYD,Gold Coast – Sydney,2407946,4,False
+2023,2022–23,MEL-OOL,Melbourne – Gold Coast,2240759,5,False
+2023,2022–23,ADL-MEL,Adelaide – Melbourne,2206797,6,False
+2023,2022–23,MEL-PER,Melbourne – Perth,1813636,7,False
+2023,2022–23,ADL-SYD,Adelaide – Sydney,1604829,8,False
+2023,2022–23,PER-SYD,Perth – Sydney,1496806,9,False
+2023,2022–23,HBA-MEL,Hobart – Melbourne,1233617,10,False
+2024,2023–24,MEL-SYD,Melbourne – Sydney,7919977,1,False
+2024,2023–24,BNE-SYD,Brisbane – Sydney,4325094,2,False
+2024,2023–24,BNE-MEL,Brisbane – Melbourne,3389932,3,False
+2024,2023–24,OOL-SYD,Gold Coast – Sydney,2518621,4,False
+2024,2023–24,ADL-MEL,Adelaide – Melbourne,2331966,5,False
+2024,2023–24,MEL-OOL,Melbourne – Gold Coast,2236221,6,False
+2024,2023–24,MEL-PER,Melbourne – Perth,1976870,7,False
+2024,2023–24,ADL-SYD,Adelaide – Sydney,1844028,8,False
+2024,2023–24,PER-SYD,Perth – Sydney,1610572,9,False
+2024,2023–24,HBA-MEL,Hobart – Melbourne,1337223,10,False
+2025,2024–25,MEL-SYD,Melbourne – Sydney,8055760,1,False
+2025,2024–25,BNE-SYD,Brisbane – Sydney,4358778,2,False
+2025,2024–25,BNE-MEL,Brisbane – Melbourne,3553095,3,False
+2025,2024–25,OOL-SYD,Gold Coast – Sydney,2465829,4,False
+2025,2024–25,ADL-MEL,Adelaide – Melbourne,2323680,5,False
+2025,2024–25,MEL-OOL,Melbourne – Gold Coast,2106606,6,False
+2025,2024–25,MEL-PER,Melbourne – Perth,2066194,7,False
+2025,2024–25,ADL-SYD,Adelaide – Sydney,1890067,8,False
+2025,2024–25,PER-SYD,Perth – Sydney,1717855,9,False
+2025,2024–25,HBA-MEL,Hobart – Melbourne,1423274,10,False
+2026,2025–26,MEL-SYD,Melbourne – Sydney,8080486,1,False
+2026,2025–26,BNE-SYD,Brisbane – Sydney,4429241,2,False
+2026,2025–26,BNE-MEL,Brisbane – Melbourne,3696255,3,False
+2026,2025–26,OOL-SYD,Gold Coast – Sydney,2610133,4,False
+2026,2025–26,ADL-MEL,Adelaide – Melbourne,2414465,5,False
+2026,2025–26,MEL-OOL,Melbourne – Gold Coast,2216708,6,False
+2026,2025–26,MEL-PER,Melbourne – Perth,2102383,7,False
+2026,2025–26,ADL-SYD,Adelaide – Sydney,1903180,8,False
+2026,2025–26,PER-SYD,Perth – Sydney,1732968,9,False
+2026,2025–26,HBA-MEL,Hobart – Melbourne,1457494,10,False

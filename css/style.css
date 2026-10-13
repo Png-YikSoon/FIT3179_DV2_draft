@@ -1,0 +1,71 @@
+/* ------------------------------------------------------------------
+   Up in the Air — base styles
+   Change the look here; chart colours live in js/main.js and the specs.
+------------------------------------------------------------------- */
+:root {
+  --page: #f9f9f7;
+  --surface: #ffffff;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --rule: #e1e0d9;
+  --accent: #2a78d6;
+  --font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-head: "Barlow Condensed", "Barlow", system-ui, sans-serif;
+  --max: 1040px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+/* ---------- hero ---------- */
+.hero { background: #0d2b4e; color: #fff; padding: 72px 0 56px; }
+.hero .kicker { color: #9ec5f4; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 8px; }
+.hero h1 { font-family: var(--font-head); font-weight: 700; font-size: 64px; line-height: 1; margin: 0 0 16px; }
+.hero .lede { max-width: 62ch; font-size: 19px; color: #e6eef8; margin: 0; }
+
+/* ---------- sections ---------- */
+section { padding: 56px 0 8px; border-bottom: 1px solid var(--rule); }
+.section-num { font-family: var(--font-head); color: var(--accent); font-size: 18px; font-weight: 600; margin: 0; }
+h2 { font-family: var(--font-head); font-weight: 600; font-size: 40px; line-height: 1.1; margin: 0 0 24px; }
+h3 { font-family: var(--font-head); font-weight: 600; font-size: 24px; line-height: 1.2; margin: 0 0 8px; }
+.note { color: var(--ink-2); max-width: 68ch; margin: 0 0 12px; }
+.callout { border-left: 3px solid var(--accent); padding-left: 12px; }
+
+/* ---------- chart blocks ---------- */
+.chart-block {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 0 0 32px;
+}
+.vis { width: 100%; margin-top: 12px; }
+.vis-map { display: flex; justify-content: center; }
+
+.split { display: grid; grid-template-columns: minmax(240px, 1fr) auto; gap: 32px; align-items: start; }
+.split .vis { margin-top: 0; }
+
+/* vega-embed: let "container"-width charts fill the block */
+.vega-embed { width: 100%; }
+.vega-bindings { font-family: var(--font-body); font-size: 15px; margin-top: 8px; }
+.vega-bindings select { font: inherit; padding: 4px 8px; border: 1px solid var(--rule); border-radius: 6px; }
+
+/* ---------- footer ---------- */
+footer { padding: 32px 0 56px; color: var(--ink-2); font-size: 14px; }
+footer a { color: var(--accent); }
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 48px; }
+}

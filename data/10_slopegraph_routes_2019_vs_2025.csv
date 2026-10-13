@@ -1,0 +1,31 @@
+route_code,route,change_pct,recovered,year,passengers
+ADL-MEL,Adelaide – Melbourne,-5.6,False,2019,2538061.0
+ADL-MEL,Adelaide – Melbourne,-5.6,False,2025,2395818.0
+ADL-SYD,Adelaide – Sydney,1.4,True,2019,1878741.0
+ADL-SYD,Adelaide – Sydney,1.4,True,2025,1904858.0
+BNE-CNS,Brisbane – Cairns,1.6,True,2019,1292703.0
+BNE-CNS,Brisbane – Cairns,1.6,True,2025,1313044.0
+BNE-MEL,Brisbane – Melbourne,1.0,True,2019,3608681.0
+BNE-MEL,Brisbane – Melbourne,1.0,True,2025,3646094.0
+BNE-PER,Brisbane – Perth,18.7,True,2019,960632.0
+BNE-PER,Brisbane – Perth,18.7,True,2025,1140132.0
+BNE-SYD,Brisbane – Sydney,-9.1,False,2019,4821044.0
+BNE-SYD,Brisbane – Sydney,-9.1,False,2025,4382963.0
+BNE-TSV,Brisbane – Townsville,-2.7,False,2019,1018094.0
+BNE-TSV,Brisbane – Townsville,-2.7,False,2025,990802.0
+CBR-MEL,Canberra – Melbourne,-17.4,False,2019,1184774.0
+CBR-MEL,Canberra – Melbourne,-17.4,False,2025,979092.0
+CNS-SYD,Cairns – Sydney,-14.0,False,2019,1078060.0
+CNS-SYD,Cairns – Sydney,-14.0,False,2025,927134.0
+HBA-MEL,Hobart – Melbourne,-12.6,False,2019,1670181.0
+HBA-MEL,Hobart – Melbourne,-12.6,False,2025,1460515.0
+MEL-OOL,Melbourne – Gold Coast,1.2,True,2019,2121955.0
+MEL-OOL,Melbourne – Gold Coast,1.2,True,2025,2146910.0
+MEL-PER,Melbourne – Perth,-0.0,False,2019,2110125.0
+MEL-PER,Melbourne – Perth,-0.0,False,2025,2109230.0
+MEL-SYD,Melbourne – Sydney,-11.6,False,2019,9181932.0
+MEL-SYD,Melbourne – Sydney,-11.6,False,2025,8121167.0
+OOL-SYD,Gold Coast – Sydney,-7.5,False,2019,2733109.0
+OOL-SYD,Gold Coast – Sydney,-7.5,False,2025,2527688.0
+PER-SYD,Perth – Sydney,3.4,True,2019,1692031.0
+PER-SYD,Perth – Sydney,3.4,True,2025,1749314.0

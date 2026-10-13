@@ -1,0 +1,129 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Share of domestic holiday trips by length, travel parties with and without children, June quarter 2026.",
+  "width": "container",
+  "height": 220,
+  "data": {
+    "url": "data/12_dumbbell_holiday_length_children_jun_q_2026.csv"
+  },
+  "encoding": {
+    "y": {
+      "field": "trip_length",
+      "type": "ordinal",
+      "sort": {
+        "field": "order"
+      },
+      "title": null,
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12
+      }
+    },
+    "x": {
+      "field": "share_pct",
+      "type": "quantitative",
+      "title": "Share of holiday trips (%)",
+      "scale": {
+        "domain": [
+          0,
+          55
+        ]
+      },
+      "axis": {
+        "values": [
+          0,
+          10,
+          20,
+          30,
+          40,
+          50
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#c3c2b7",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "aggregate": "min",
+          "field": "share_pct"
+        },
+        "x2": {
+          "aggregate": "max",
+          "field": "share_pct"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 160,
+        "opacity": 1,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "party",
+          "type": "nominal",
+          "title": null,
+          "legend": {
+            "orient": "top"
+          },
+          "scale": {
+            "domain": [
+              "With children",
+              "No children"
+            ],
+            "range": [
+              "#eb6834",
+              "#2a78d6"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "party",
+            "title": "Travel party"
+          },
+          {
+            "field": "trip_length",
+            "title": "Trip length"
+          },
+          {
+            "field": "share_pct",
+            "type": "quantitative",
+            "title": "Share (%)"
+          },
+          {
+            "field": "trips_000",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Trips ('000)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 11,
+        "color": "#52514e"
+      },
+      "encoding": {
+        "text": {
+          "field": "share_pct",
+          "type": "quantitative",
+          "format": ".0f"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Change in domestic trips or spending by state visited, year ending June 2026 compared with year ending June 2025.",
+  "width": 620,
+  "height": 520,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "params": [
+    {
+      "name": "measure",
+      "value": "all_trips_change_pct",
+      "bind": {
+        "input": "select",
+        "options": [
+          "all_trips_change_pct",
+          "overnight_trips_change_pct",
+          "overnight_spend_change_pct"
+        ],
+        "labels": [
+          "All trips (day + overnight)",
+          "Overnight trips",
+          "Overnight spending"
+        ],
+        "name": "Show change in: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "data/07_choropleth_states_ye_jun2026.csv"
+            },
+            "key": "state",
+            "fields": [
+              "state_abbr",
+              "all_trips_change_pct",
+              "overnight_trips_change_pct",
+              "overnight_spend_change_pct",
+              "small_sample_caution"
+            ]
+          }
+        },
+        {
+          "calculate": "datum[measure]",
+          "as": "value"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Change (%)",
+          "scale": {
+            "domain": [
+              -22,
+              0,
+              22
+            ],
+            "range": [
+              "#e34948",
+              "#f0efec",
+              "#2a78d6"
+            ],
+            "clamp": true,
+            "interpolate": "lab"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "title": "State"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "format": "+.1f",
+            "title": "Change (%)"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/07_choropleth_states_ye_jun2026.csv"
+      },
+      "transform": [
+        {
+          "calculate": "{'WA':[122,-25.5],'NT':[133.4,-19.5],'SA':[135.6,-30],'QLD':[144.5,-22.5],'NSW':[146.8,-32.3],'VIC':[144,-37],'TAS':[146.6,-42.2],'ACT':[152.6,-36.6]}[datum.state_abbr][0]",
+          "as": "lx"
+        },
+        {
+          "calculate": "{'WA':[122,-25.5],'NT':[133.4,-19.5],'SA':[135.6,-30],'QLD':[144.5,-22.5],'NSW':[146.8,-32.3],'VIC':[144,-37],'TAS':[146.6,-42.2],'ACT':[152.6,-36.6]}[datum.state_abbr][1]",
+          "as": "ly"
+        },
+        {
+          "calculate": "datum[measure]",
+          "as": "value"
+        },
+        {
+          "calculate": "datum.state_abbr + ' ' + (datum.value > 0 ? '+' : '') + format(datum.value, '.1f') + '%' + (datum.small_sample_caution == 'True' || datum.small_sample_caution === true ? '*' : '')",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#0b0b0b"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lx",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "ly",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

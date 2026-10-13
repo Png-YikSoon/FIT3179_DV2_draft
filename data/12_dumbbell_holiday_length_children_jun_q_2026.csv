@@ -1,0 +1,9 @@
+trip_length,order,party,share_pct,trips_000
+1 night,1,With children,17,781
+1 night,1,No children,23,2000
+2–3 nights,2,With children,50,2300
+2–3 nights,2,No children,48,4000
+4–7 nights,3,With children,27,1200
+4–7 nights,3,No children,21,1800
+8+ nights,4,With children,6,282
+8+ nights,4,No children,8,637

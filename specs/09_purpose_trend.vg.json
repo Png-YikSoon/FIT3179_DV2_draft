@@ -1,0 +1,182 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Domestic trips by reason, indexed to the June quarter 2025 (100 = June quarter 2025 level).",
+  "width": "container",
+  "height": 300,
+  "padding": {
+    "right": 190
+  },
+  "data": {
+    "url": "data/09_purpose_by_quarter.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "quarter_order": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.trip_type == 'All trips'"
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "y": 100
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#c3c2b7",
+        "strokeDash": [
+          4,
+          4
+        ]
+      },
+      "encoding": {
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              75,
+              115
+            ]
+          }
+        }
+      }
+    },
+    {
+      "encoding": {
+        "x": {
+          "field": "quarter",
+          "type": "ordinal",
+          "sort": {
+            "field": "quarter_order"
+          },
+          "title": null,
+          "axis": {
+            "labelAngle": 0
+          },
+          "scale": {
+            "padding": 0.3
+          }
+        },
+        "y": {
+          "field": "index_vs_jun_q_2025",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              75,
+              115
+            ]
+          },
+          "title": "Trips (June quarter 2025 = 100)"
+        },
+        "color": {
+          "field": "purpose",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Holiday",
+              "Visiting friends & relatives",
+              "Business",
+              "Other"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834",
+              "#1baf7a",
+              "#eda100"
+            ]
+          },
+          "title": "Main reason for trip",
+          "legend": {
+            "orient": "top"
+          }
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 2.5
+          }
+        },
+        {
+          "mark": {
+            "type": "circle",
+            "size": 70,
+            "stroke": "#ffffff",
+            "strokeWidth": 1.5,
+            "opacity": 1
+          },
+          "encoding": {
+            "tooltip": [
+              {
+                "field": "purpose",
+                "title": "Reason"
+              },
+              {
+                "field": "quarter",
+                "title": "Quarter"
+              },
+              {
+                "field": "trips_000",
+                "type": "quantitative",
+                "format": ",.0f",
+                "title": "Trips ('000)"
+              },
+              {
+                "field": "index_vs_jun_q_2025",
+                "type": "quantitative",
+                "title": "Index"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.quarter_order == 5"
+            },
+            {
+              "calculate": "datum.purpose + ' ' + (datum.index_vs_jun_q_2025 >= 100 ? '+' : '') + format(datum.index_vs_jun_q_2025 - 100, '.0f') + '%'",
+              "as": "lab"
+            },
+            {
+              "calculate": "datum.purpose == 'Other' ? 14 : datum.purpose == 'Visiting friends & relatives' ? -5 : datum.purpose == 'Holiday' ? -6 : 0",
+              "as": "nudge"
+            },
+            {
+              "calculate": "datum.index_vs_jun_q_2025 - datum.nudge / 7.5",
+              "as": "ly"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "fontSize": 12
+          },
+          "encoding": {
+            "text": {
+              "field": "lab"
+            },
+            "color": {
+              "value": "#0b0b0b"
+            },
+            "y": {
+              "field": "ly",
+              "type": "quantitative"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

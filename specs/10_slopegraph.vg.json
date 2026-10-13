@@ -1,0 +1,177 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Passengers on the 15 busiest routes of 2019, compared with 2025 (calendar years).",
+  "width": 380,
+  "height": 520,
+  "data": {
+    "url": "data/10_slopegraph_routes_2019_vs_2025.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.recovered == 'True' || datum.recovered === true ? 'More passengers than 2019' : 'Fewer passengers than 2019'",
+      "as": "status"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "orient": "top",
+        "domain": false,
+        "ticks": false
+      },
+      "scale": {
+        "padding": 0.1
+      }
+    },
+    "y": {
+      "field": "passengers",
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "domain": [
+          800000,
+          10000000
+        ]
+      },
+      "title": "Passengers per year (log scale)",
+      "axis": {
+        "format": "~s",
+        "values": [
+          1000000,
+          2000000,
+          4000000,
+          8000000
+        ]
+      }
+    },
+    "color": {
+      "field": "status",
+      "type": "nominal",
+      "title": null,
+      "legend": {
+        "orient": "top",
+        "labelLimit": 300,
+        "direction": "vertical"
+      },
+      "scale": {
+        "domain": [
+          "More passengers than 2019",
+          "Fewer passengers than 2019"
+        ],
+        "range": [
+          "#2a78d6",
+          "#e34948"
+        ]
+      }
+    },
+    "detail": {
+      "field": "route"
+    },
+    "opacity": {
+      "condition": {
+        "param": "pick",
+        "empty": true,
+        "value": 1
+      },
+      "value": 0.2
+    },
+    "tooltip": [
+      {
+        "field": "route",
+        "title": "Route"
+      },
+      {
+        "field": "year",
+        "title": "Year"
+      },
+      {
+        "field": "passengers",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Passengers"
+      },
+      {
+        "field": "change_pct",
+        "type": "quantitative",
+        "format": "+.1f",
+        "title": "Change 2019→2025 (%)"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "route"
+            ],
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 60,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5,
+        "opacity": 1
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2025"
+        },
+        {
+          "calculate": "datum.route + '  ' + (datum.change_pct > 0 ? '+' : '') + (abs(datum.change_pct) < 0.5 ? '0' : format(datum.change_pct, '.0f')) + '%'",
+          "as": "lab"
+        },
+        {
+          "calculate": "{'MEL-OOL': -6, 'MEL-PER': 6, 'BNE-TSV': -10, 'CNS-SYD': 5}[datum.route_code] || 0",
+          "as": "nudge"
+        },
+        {
+          "calculate": "datum.passengers * pow(10, -datum.nudge / 474)",
+          "as": "ly"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 11
+      },
+      "encoding": {
+        "text": {
+          "field": "lab"
+        },
+        "color": {
+          "value": "#0b0b0b"
+        },
+        "y": {
+          "field": "ly",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

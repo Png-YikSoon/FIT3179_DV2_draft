@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Share of domestic trips by main reason, year ending June 2026. Each square is 1% of trips.",
+  "data": {
+    "url": "data/08_waffle_purpose_grid_ye_jun2026.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "col": "number",
+        "row": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "lookup": "purpose",
+      "from": {
+        "data": {
+          "url": "data/08_waffle_purpose_summary_ye_jun2026.csv"
+        },
+        "key": "purpose",
+        "fields": [
+          "share_pct"
+        ]
+      }
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "trip_type",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "All trips (day + overnight)",
+        "Overnight trips"
+      ],
+      "header": {
+        "labelFontSize": 13,
+        "labelFontWeight": 600
+      }
+    }
+  },
+  "spec": {
+    "width": 220,
+    "height": 220,
+    "mark": {
+      "type": "rect",
+      "cornerRadius": 2
+    },
+    "encoding": {
+      "x": {
+        "field": "col",
+        "type": "ordinal",
+        "axis": null,
+        "sort": "ascending",
+        "scale": {
+          "paddingInner": 0.12
+        }
+      },
+      "y": {
+        "field": "row",
+        "type": "ordinal",
+        "axis": null,
+        "sort": "descending",
+        "scale": {
+          "paddingInner": 0.12
+        }
+      },
+      "color": {
+        "field": "purpose",
+        "type": "nominal",
+        "title": "Main reason for trip",
+        "scale": {
+          "domain": [
+            "Holiday",
+            "Visiting friends & relatives",
+            "Business",
+            "Other"
+          ],
+          "range": [
+            "#2a78d6",
+            "#eb6834",
+            "#1baf7a",
+            "#eda100"
+          ]
+        },
+        "legend": {
+          "orient": "bottom",
+          "columns": 2
+        }
+      },
+      "tooltip": [
+        {
+          "field": "trip_type",
+          "title": "Trips"
+        },
+        {
+          "field": "purpose",
+          "title": "Reason"
+        },
+        {
+          "field": "share_pct",
+          "type": "quantitative",
+          "format": ".1f",
+          "title": "Share (%)"
+        }
+      ]
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

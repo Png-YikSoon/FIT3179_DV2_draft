@@ -1,0 +1,169 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Monthly domestic airline passengers, July 2014 to July 2026, with 12-month average.",
+  "width": "container",
+  "height": 320,
+  "data": {
+    "url": "data/01_trend_monthly_passengers.csv"
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "start": "2020-03-01",
+            "end": "2021-12-01"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#f0efec"
+      },
+      "encoding": {
+        "x": {
+          "field": "start",
+          "type": "temporal"
+        },
+        "x2": {
+          "field": "end"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2020-04-01",
+            "label": "COVID-19 border closures"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "y": 12,
+        "color": "#52514e",
+        "fontSize": 12
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1,
+        "color": "#86b6ef"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": null,
+          "axis": {
+            "format": "%Y",
+            "tickCount": "year"
+          }
+        },
+        "y": {
+          "field": "passengers",
+          "type": "quantitative",
+          "title": "Passengers per month",
+          "axis": {
+            "format": "~s"
+          }
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.passengers_12m_avg > 0"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "color": "#2a78d6"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "passengers_12m_avg",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "encodings": [
+              "x"
+            ],
+            "on": "pointerover",
+            "nearest": true,
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#52514e"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "empty": false,
+            "value": 0.6
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {
+            "field": "date",
+            "type": "temporal",
+            "format": "%B %Y",
+            "title": "Month"
+          },
+          {
+            "field": "passengers",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Passengers"
+          },
+          {
+            "field": "passengers_12m_avg",
+            "type": "quantitative",
+            "format": ",.0f",
+            "title": "12-month average"
+          },
+          {
+            "field": "load_factor",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Seats filled (%)"
+          }
+        ]
+      }
+    }
+  ]
+}
