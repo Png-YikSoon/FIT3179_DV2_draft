@@ -4,7 +4,8 @@
   "width": "container",
   "height": 360,
   "padding": {
-    "right": 160
+    "right": 160,
+    "bottom": 24
   },
   "data": {
     "url": "data/05_bump_top10_routes_by_fy.csv",
@@ -71,7 +72,7 @@
       },
       "mark": {
         "type": "text",
-        "y": -8,
+        "y": -10,
         "fontSize": 11,
         "color": "#52514e"
       },
@@ -159,7 +160,8 @@
           "type": "nominal",
           "title": null,
           "legend": {
-            "orient": "top"
+            "orient": "bottom",
+            "direction": "horizontal"
           },
           "scale": {
             "domain": [

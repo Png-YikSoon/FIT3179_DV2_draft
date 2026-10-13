@@ -4,7 +4,7 @@
   "width": "container",
   "height": 300,
   "padding": {
-    "right": 190
+    "right": 250
   },
   "data": {
     "url": "data/09_purpose_by_quarter.csv",
@@ -60,7 +60,8 @@
           },
           "title": null,
           "axis": {
-            "labelAngle": 0
+            "labelAngle": 0,
+            "labelExpr": "[slice(datum.value, 0, 5), slice(datum.value, 6)]"
           },
           "scale": {
             "padding": 0.3

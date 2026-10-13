@@ -144,10 +144,10 @@
       },
       "transform": [
         {
-          "filter": "datum.passengers_fy2026 > 2500000 || abs(datum.change_pct) > 50"
+          "filter": "datum.passengers_fy2026 > 2500000 || abs(datum.change_pct) > 50 || datum.code == 'AYQ'"
         },
         {
-          "calculate": "datum.city + ' ' + (datum.change_pct > 0 ? '+' : '') + format(datum.change_pct, '.0f') + '%'",
+          "calculate": "(datum.code == 'AYQ' ? 'Uluru' : datum.city) + ' ' + (datum.change_pct > 0 ? '+' : '') + format(datum.change_pct, '.0f') + '%'",
           "as": "label"
         },
         {

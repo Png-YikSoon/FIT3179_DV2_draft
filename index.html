@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Up in the Air: Domestic Flying in Australia</title>
   <meta name="description" content="A data story about domestic airline travel within Australia, 2014–2026.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
@@ -19,9 +16,9 @@
   <div class="wrap">
     <p class="kicker">FIT3179 Data Visualisation 2 · Domestic air travel in Australia</p>
     <h1>Up in the Air</h1>
-    <p class="lede">Australia is a country the size of Europe with most of its people in a handful of coastal cities.
-      For many trips, flying is the only practical way to get around. How many people fly, where do they go,
-      and why? <!-- DRAFT: rewrite the lede in your own words --></p>
+    <p class="lede">Australia is about 23 times the size of Malaysia, yet most of its 27 million people live in a
+      handful of cities on the coast. For many journeys, flying is the only practical way to get around.
+      How many Australians fly, where do they go, and why?</p>
   </div>
 </header>
 
@@ -33,27 +30,84 @@
     <h2>When Australians fly</h2>
 
     <article class="chart-block">
-      <h3>A Nation in Motion: Domestic Passenger Trends, 2014–2026</h3>
-      <p class="note">DRAFT: About 61 million passengers flew in 2019. In 2020, border closures cut this to 19 million.
-        By 2025, traffic was back to 60 million, about 98% of the 2019 level.</p>
-      <div id="vis01" class="vis"></div>
-    </article>
-
-    <article class="chart-block split">
-      <div class="split-text">
-        <h3>Australia's Travel Calendar: When Do Passengers Fly?</h3>
-        <p class="note">Each ring is one year (2015 in the centre, 2025 on the outside). Each segment is a month.
-          Blue months were busier than that year's average month; red months were quieter.</p>
-        <p class="note">DRAFT: point out the spring peak (October), the January holiday rush and the quiet February.</p>
+      <div class="chart-head">
+        <h3>A Nation in Motion: Domestic Passenger Trends, 2014–2026</h3>
+        <p class="subtitle">Passengers on domestic flights each month (thin line) and the 12-month average (thick line).</p>
       </div>
-      <div id="vis02" class="vis"></div>
+      <div class="chart-row">
+        <div id="vis01" class="vis"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>A 97% collapse</h4>
+            <p>In April 2020 only <strong>146,000</strong> people flew, down from <strong>5.2 million</strong> in April 2019, as states closed their borders.</p>
+          </div>
+          <div class="finding">
+            <h4>Almost back</h4>
+            <p><strong>60.4 million</strong> passengers flew in 2025, <strong>98%</strong> of the 2019 record of 61.4 million.</p>
+          </div>
+          <div class="finding">
+            <h4>Fuller planes</h4>
+            <p>Airlines filled <strong>82.4%</strong> of seats in 2025, up from 80.7% in 2019.</p>
+          </div>
+        </aside>
+      </div>
     </article>
 
     <article class="chart-block">
-      <h3>Holiday Peaks or Everyday Journeys?</h3>
-      <p class="note">Each line shows a route's average month from 2023 to 2025. 100 means a typical month for that route.
-        DRAFT: leisure routes swing with the holidays; business and mining routes stay steadier.</p>
-      <div id="vis11" class="vis"></div>
+      <div class="chart-head">
+        <h3>Australia's Travel Calendar: When Do Passengers Fly?</h3>
+        <p class="subtitle">Each ring is a year (2015 in the centre, 2025 outside); each segment is a month.
+          Blue months were busier than that year's average month, red months quieter.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis02" class="vis vis-center"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>October is the peak</h4>
+            <p>In normal years, October is <strong>9% busier</strong> than an average month, lining up with the spring school holidays.</p>
+          </div>
+          <div class="finding">
+            <h4>A winter escape in July</h4>
+            <p>July is <strong>6% above</strong> average, during the winter school holidays.</p>
+          </div>
+          <div class="finding">
+            <h4>February is the quietest</h4>
+            <p>February sits <strong>12% below</strong> average: it is the shortest month and comes straight after the summer holidays.</p>
+          </div>
+          <p class="insight-note">Averages exclude 2020–2022, when lockdowns, not seasons, decided when people flew.</p>
+        </aside>
+      </div>
+    </article>
+
+    <article class="chart-block wide">
+      <div class="chart-head">
+        <h3>Holiday Peaks or Everyday Journeys?</h3>
+        <p class="subtitle">Average passengers in each month, 2023–2025, on eight routes. 100 means a typical month for that route.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis11" class="vis"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Melbourne–Sydney barely changes</h4>
+            <p>Its busiest and quietest months are only <strong>17 points</strong> apart: people fly it all year round.</p>
+          </div>
+          <div class="finding">
+            <h4>Cairns peaks in July</h4>
+            <p>Southerners head to the warm tropics in winter: July is <strong>24% above</strong> average, February <strong>29% below</strong>.</p>
+          </div>
+          <div class="finding">
+            <h4>Canberra empties in January</h4>
+            <p>Canberra–Sydney drops <strong>33% below</strong> average in January, when the capital's government offices slow down for summer.</p>
+          </div>
+          <div class="finding">
+            <h4>Mining routes stay steady</h4>
+            <p>Perth–Port Hedland stays within <strong>12%</strong> of its average all year, as fly-in fly-out (FIFO) workers travel on fixed rosters.</p>
+          </div>
+        </aside>
+      </div>
     </article>
   </section>
 
@@ -62,17 +116,63 @@
     <p class="section-num">02</p>
     <h2>Where the planes go</h2>
 
-    <article class="chart-block">
-      <h3>Connected by Air: Australia's Domestic Flight Network</h3>
-      <p class="note">Thicker lines carried more passengers between July 2025 and June 2026. Hover over a line to see the route.</p>
-      <div id="vis03" class="vis vis-map"></div>
+    <article class="chart-block wide">
+      <div class="chart-head">
+        <h3>Connected by Air: Australia's Domestic Flight Network</h3>
+        <p class="subtitle">62 major routes, July 2025 to June 2026. Thicker lines carried more passengers. Hover over a line to see the route.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis03" class="vis vis-center"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>One route, one in seven passengers</h4>
+            <p>Melbourne–Sydney carried <strong>8.1 million</strong> passengers, about <strong>22,000 a day</strong> and 15% of all passengers on these routes.</p>
+          </div>
+          <div class="finding">
+            <h4>The east-coast triangle</h4>
+            <p>Flights linking Sydney, Melbourne and Brisbane carry <strong>30%</strong> of all passengers.</p>
+          </div>
+          <div class="finding">
+            <h4>Crossing a continent</h4>
+            <p>Brisbane–Perth is <strong>3,615 km</strong>, longer than Kuala Lumpur to Hong Kong (about 2,500 km), but still a domestic flight.</p>
+          </div>
+          <div class="finding">
+            <h4>Perth is the west's hub</h4>
+            <p>Every Western Australian regional route in the data connects through Perth.</p>
+          </div>
+        </aside>
+      </div>
     </article>
 
-    <article class="chart-block">
-      <h3>Australia's Aviation Hubs: Where Traffic Concentrates</h3>
-      <p class="note">Circle size shows passengers on major routes through each airport (2025–26).
-        Blue airports are busier than before COVID-19 (2018–19); red airports have not recovered.</p>
-      <div id="vis04" class="vis vis-map"></div>
+    <article class="chart-block wide">
+      <div class="chart-head">
+        <h3>Australia's Aviation Hubs: Where Traffic Concentrates</h3>
+        <p class="subtitle">Circle size shows passengers on major routes through each airport (2025–26).
+          Colour compares traffic with 2018–19, before COVID-19: blue is busier, red is quieter.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis04" class="vis vis-center"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Mining towns boomed</h4>
+            <p>Karratha <strong>+61%</strong>, Kalgoorlie <strong>+54%</strong>, Newman +39% and Port Hedland +38%: all home to FIFO mining workers.</p>
+          </div>
+          <div class="finding">
+            <h4>The big cities lag</h4>
+            <p>Sydney (<strong>−11%</strong>) and Canberra (<strong>−12%</strong>) are still below 2018–19, in line with the drop in business travel (Section 04).</p>
+          </div>
+          <div class="finding">
+            <h4>The Red Centre has not recovered</h4>
+            <p>Alice Springs is down <strong>59%</strong> and Uluru (Ayers Rock) <strong>38%</strong>.</p>
+          </div>
+          <div class="finding">
+            <h4>Fewer than half are back</h4>
+            <p>Only <strong>18 of 38</strong> airports handle more passengers than before the pandemic.</p>
+          </div>
+        </aside>
+      </div>
     </article>
   </section>
 
@@ -81,29 +181,81 @@
     <p class="section-num">03</p>
     <h2>The busiest routes</h2>
 
-    <article class="chart-block">
-      <h3>The Race for the Top: How Australia's Busiest Routes Change</h3>
-      <p class="note">Australia's financial year runs from July to June, so "2025–26" means July 2025 to June 2026.
-        Hover over a line to follow one route.</p>
-      <div id="vis05" class="vis"></div>
-    </article>
-
-    <article class="chart-block split">
-      <div class="split-text">
-        <h3>Routes Rewritten: Which Connections Recovered?</h3>
-        <p class="note">Passengers on 2019's 15 busiest routes, compared with 2025. The scale is logarithmic,
-          so equal slopes mean equal percentage changes.</p>
-        <p class="note">DRAFT: Melbourne–Sydney is still number one but carried 12% fewer passengers;
-          Brisbane–Perth grew 19%.</p>
+    <article class="chart-block wide">
+      <div class="chart-head">
+        <h3>The Race for the Top: How Australia's Busiest Routes Change</h3>
+        <p class="subtitle">Top 10 routes by passengers in each financial year (July to June, so "2025–26" means July 2025 to June 2026).
+          Hover over a line to follow one route.</p>
       </div>
-      <div id="vis10" class="vis"></div>
+      <div class="chart-row">
+        <div id="vis05" class="vis"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Melbourne–Sydney never loses</h4>
+            <p>It ranked <strong>first every year</strong>, even in 2020–21 when it carried just 1.7 million passengers.</p>
+          </div>
+          <div class="finding">
+            <h4>Cairns' lockdown leap</h4>
+            <p>Brisbane–Cairns jumped to <strong>3rd</strong> in 2020–21: with state borders shut, Queenslanders could still fly within their own state.</p>
+          </div>
+          <div class="finding">
+            <h4>The Gold Coast climbs</h4>
+            <p>Melbourne–Gold Coast rose from <strong>9th to 6th</strong> since 2014–15.</p>
+          </div>
+        </aside>
+      </div>
     </article>
 
     <article class="chart-block">
-      <h3>How Full Are the Planes? Demand Across Routes and Months</h3>
-      <p class="note">The "load factor" is the share of seats that had a paying passenger.
-        Darker squares mean fuller planes. July 2025 to June 2026.</p>
-      <div id="vis06" class="vis"></div>
+      <div class="chart-head">
+        <h3>Routes Rewritten: Which Connections Recovered?</h3>
+        <p class="subtitle">Passengers on 2019's 15 busiest routes, compared with 2025. The scale is logarithmic, so equal slopes mean equal percentage changes.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis10" class="vis vis-center"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Only 6 of 15 recovered</h4>
+            <p>Together these routes carried <strong>5% fewer</strong> passengers in 2025 than in 2019.</p>
+          </div>
+          <div class="finding">
+            <h4>Business routes lost most</h4>
+            <p>Canberra–Melbourne <strong>−17%</strong>, Melbourne–Sydney <strong>−12%</strong> and Brisbane–Sydney −9%.</p>
+          </div>
+          <div class="finding">
+            <h4>Brisbane–Perth is the winner</h4>
+            <p>Up <strong>19%</strong>, the strongest growth of any top route.</p>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <article class="chart-block">
+      <div class="chart-head">
+        <h3>How Full Are the Planes? Demand Across Routes and Months</h3>
+        <p class="subtitle">Load factor (the share of seats with a paying passenger) on the 15 busiest routes, July 2025 to June 2026.
+          Darker squares mean fuller planes.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis06" class="vis"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Gold Coast flights are fullest</h4>
+            <p>Melbourne–Gold Coast averaged <strong>91%</strong> of seats filled and passed 90% in <strong>8 of 12</strong> months.</p>
+          </div>
+          <div class="finding">
+            <h4>October fills up</h4>
+            <p>The fullest month across these routes (<strong>88%</strong>); February is the emptiest (82%).</p>
+          </div>
+          <div class="finding">
+            <h4>Most empty seats</h4>
+            <p>Canberra–Melbourne averaged only <strong>76%</strong>.</p>
+          </div>
+        </aside>
+      </div>
     </article>
   </section>
 
@@ -111,34 +263,108 @@
   <section id="why">
     <p class="section-num">04</p>
     <h2>Why Australians travel</h2>
-    <p class="note callout">These charts use Tourism Research Australia's survey of all domestic trips, by any
-      kind of transport (car, bus, train or plane), not just flights.</p>
+    <p class="callout">The charts in this section use Tourism Research Australia's survey of all domestic trips,
+      by any kind of transport (car, bus, train or plane), not just flights.</p>
 
     <article class="chart-block">
-      <h3>Work or Escape? Why Australians Travel Domestically</h3>
-      <p class="note">Each square is 1% of trips, year ending June 2026.</p>
-      <div id="vis08" class="vis"></div>
+      <div class="chart-head">
+        <h3>Work or Escape? Why Australians Travel Domestically</h3>
+        <p class="subtitle">Main reason for trips, year ending June 2026. Each square is 1% of trips.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis08" class="vis"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Half of all trips are holidays</h4>
+            <p><strong>50%</strong> of trips, or about 201 million a year.</p>
+          </div>
+          <div class="finding">
+            <h4>Family comes second</h4>
+            <p>Visiting friends and relatives accounts for <strong>one in three</strong> trips and <strong>38%</strong> of overnight trips.</p>
+          </div>
+          <div class="finding">
+            <h4>Business is a small slice</h4>
+            <p>Only <strong>7%</strong> of all trips and 8% of overnight trips.</p>
+          </div>
+        </aside>
+      </div>
     </article>
 
     <article class="chart-block">
-      <h3>Is the Purpose of Travel Changing?</h3>
-      <p class="note">Trips in each quarter compared with the June quarter 2025 (= 100).
-        DRAFT: business trips fell by nearly a fifth (−18%) in a year while holiday trips grew.</p>
-      <div id="vis09" class="vis"></div>
+      <div class="chart-head">
+        <h3>Is the Purpose of Travel Changing?</h3>
+        <p class="subtitle">Trips in each quarter compared with the June quarter 2025 (= 100).</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis09" class="vis"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Business travel fell 18%</h4>
+            <p>Trips dropped from <strong>8.7 million</strong> to <strong>7.1 million</strong> a quarter in one year. Overnight business trips fell <strong>38%</strong>.</p>
+          </div>
+          <div class="finding">
+            <h4>Holidays grew 9%</h4>
+            <p>Holiday trips rose from <strong>46.8 million</strong> to <strong>50.8 million</strong> a quarter.</p>
+          </div>
+          <div class="finding">
+            <h4>Spending on flights</h4>
+            <p>Australians spent <strong>$4.5 billion</strong> on domestic airfares in the June quarter 2026. Airfare spending on day trips more than doubled in a year.</p>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <article class="chart-block wide">
+      <div class="chart-head">
+        <h3>Domestic Travel Across Australia: Where Tourism Is Growing</h3>
+        <p class="subtitle">Change by state visited, year ending June 2026 compared with the year before. Use the menu to switch measures.
+          * Smaller states and territories have higher survey error.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis07" class="vis vis-center"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Every state had more trips</h4>
+            <p>Total trips grew everywhere, led by Queensland (<strong>+7.7%</strong>) and Western Australia (<strong>+7.3%</strong>).</p>
+          </div>
+          <div class="finding">
+            <h4>Overnight stays held steady</h4>
+            <p>Overnight trips changed by less than <strong>2%</strong> in every state: the growth came from day trips.</p>
+          </div>
+          <div class="finding">
+            <h4>Spending tells a different story</h4>
+            <p>Overnight spending rose <strong>22%</strong> in the Northern Territory and 12% in Western Australia, but fell <strong>13%</strong> in the ACT.</p>
+          </div>
+        </aside>
+      </div>
     </article>
 
     <article class="chart-block">
-      <h3>Domestic Travel Across Australia: Where Tourism Is Growing</h3>
-      <p class="note">Change by state visited, year ending June 2026 compared with the year before.
-        Use the menu to switch measures. * Smaller states have higher survey error.</p>
-      <div id="vis07" class="vis vis-map"></div>
-    </article>
-
-    <article class="chart-block">
-      <h3>Short Break or Long Holiday?</h3>
-      <p class="note">Holiday trips by length, June quarter 2026. Families with children were more likely to stay
-        four to seven nights.</p>
-      <div id="vis12" class="vis"></div>
+      <div class="chart-head">
+        <h3>Short Break or Long Holiday?</h3>
+        <p class="subtitle">Share of holiday trips by length, for travel groups with and without children, June quarter 2026.</p>
+      </div>
+      <div class="chart-row">
+        <div id="vis12" class="vis"></div>
+        <aside class="insight">
+          <p class="insight-label">Key findings</p>
+          <div class="finding">
+            <h4>Two or three nights is the norm</h4>
+            <p>About <strong>half</strong> of holidays for both groups (50% with children, 48% without).</p>
+          </div>
+          <div class="finding">
+            <h4>Families stay longer</h4>
+            <p><strong>27%</strong> of family holidays lasted four to seven nights, compared with 21% for groups without children.</p>
+          </div>
+          <div class="finding">
+            <h4>More one-night trips without children</h4>
+            <p><strong>23%</strong> compared with 17% for families.</p>
+          </div>
+        </aside>
+      </div>
     </article>
   </section>
 

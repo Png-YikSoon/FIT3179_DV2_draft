@@ -160,6 +160,10 @@
       "transform": [
         {
           "filter": "indexof(['Sydney','Melbourne','Brisbane','Perth','Adelaide','Hobart','Darwin','Cairns','Canberra','Gold Coast','Port Hedland','Karratha','Alice Springs'], datum.city) >= 0"
+        },
+        {
+          "calculate": "datum.code == 'OOL' ? toNumber(datum.lat) - 0.75 : toNumber(datum.lat)",
+          "as": "label_lat"
         }
       ],
       "mark": {
@@ -175,7 +179,7 @@
           "type": "quantitative"
         },
         "latitude": {
-          "field": "lat",
+          "field": "label_lat",
           "type": "quantitative"
         },
         "text": {

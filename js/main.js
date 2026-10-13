@@ -2,7 +2,7 @@
 // The shared config below sets fonts and axis styling for all charts in one place.
 
 const config = {
-  font: "Barlow, system-ui, sans-serif",
+  font: "Verdana, Geneva, DejaVu Sans, sans-serif",
   background: null,
   view: { stroke: null },
   axis: {
@@ -10,8 +10,8 @@ const config = {
     titleFontWeight: 500, gridColor: "#e1e0d9", domainColor: "#c3c2b7", tickColor: "#c3c2b7"
   },
   legend: { labelColor: "#52514e", titleColor: "#52514e", labelFontSize: 12, titleFontSize: 12, titleFontWeight: 500 },
-  header: { labelColor: "#0b0b0b", labelFont: "Barlow, system-ui, sans-serif" },
-  text: { font: "Barlow, system-ui, sans-serif" }
+  header: { labelColor: "#0b0b0b", labelFont: "Verdana, Geneva, DejaVu Sans, sans-serif" },
+  text: { font: "Verdana, Geneva, DejaVu Sans, sans-serif" }
 };
 
 const charts = {
